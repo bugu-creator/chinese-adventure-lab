@@ -12,7 +12,11 @@
 
 `git diff --check`：通过。
 
-当前环境声明 managed Sites 模式，但未提供 cua_repl.js 共享浏览器控制工具。依照该模式要求未启动预览浏览器，因此尚未进行真实浏览器、iPad、朗读和 Apple Pencil 的视觉/交互验证；上述服务端和源码检查不等于浏览器验收。建议 PR 合并前在桌面及 iPad 检查布局、对话框、朗读、配对与实际多设备游戏。
+浏览器验收已在 GitHub Actions 的 Ubuntu 24.04 上完成：桌面 Chromium、iPad (gen 7) 尺寸与触控配置的 WebKit、Pixel 7 配置的 Chromium，共 12 项测试全部通过（运行 42783976673，源码 f6de0eb）。覆盖横向溢出、目录渲染、弹窗打开与 Escape 关闭、课程深链接、拼音显隐、配对得分、问答反馈、无效参数回退、游戏导航以及教师/两名学生独立浏览器会话的加入、角色隔离与计分。
+
+发现并修复原课程问答中 classList.add 空字符串引起的异常。浏览器结果与首页截图作为 browser-review 工件保留 14 天。本地下载工件被存储服务拒绝，未完成截图人工审阅；测试通过不代表已完成视觉设计验收。真实 iPad 的设备语音、Apple Pencil 和学校 Wi-Fi 多设备体验仍需实机验证。
+
+私密验收站：https://chinese-adventure-homepage-review.fantinaa1994.chatgpt.site 。它是独立静态副本，多人入口跳转至现有 Render 服务，不包含新的多人后端部署。
 
 ## 部署范围与风险
 

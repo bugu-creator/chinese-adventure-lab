@@ -10,6 +10,9 @@ V2.0 Homepage Foundation，在 V1.1 原生 Node.js 课堂原型上渐进升级�
 npm start
 # http://localhost:3000
 npm test
+# 浏览器回归（需先 npm ci）
+npx playwright install --with-deps chromium webkit
+npx playwright test
 ```
 
 Render 使用 `node server.js` 启动，监听平台提供的 `PORT`。先在开发分支完成检查并通过 PR 审阅，再合并 main 触发已有的 Render 自动部署。此仓库未包含 Render 部署配置，自动部署是否开启需要在 Render 控制台确认。
