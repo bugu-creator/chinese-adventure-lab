@@ -37,7 +37,8 @@ async function api(req,res,url){if(req.method==='GET'&&url.pathname==='/api/even
  return json(res,200,{ok:true});
  }catch(e){return json(res,400,{error:e.message})}
 }
-const staticFiles={'/':'index.html','/index.html':'index.html','/multiplayer.html':'multiplayer.html'};
-const server=http.createServer((req,res)=>{let url;try{url=new URL(req.url,'http://localhost')}catch{return json(res,400,{error:'Bad URL'})};if(url.pathname.startsWith('/api/'))return api(req,res,url);let f=staticFiles[url.pathname];if(!f)return json(res,404,{error:'Not found'});fs.readFile(path.join(__dirname,f),(err,content)=>{if(err)return json(res,404,{error:'Not found'});res.writeHead(200,{'Content-Type':'text/html; charset=utf-8','Cache-Control':'no-store'});res.end(content)})});
+const staticFiles={'/':'index.html','/index.html':'index.html','/multiplayer.html':'multiplayer.html','/learn.html':'learn.html',
+ '/assets/css/home.css':'assets/css/home.css','/assets/js/home.js':'assets/js/home.js','/assets/js/catalog.js':'assets/js/catalog.js','/assets/images/adventure.svg':'assets/images/adventure.svg'};
+const server=http.createServer((req,res)=>{let url;try{url=new URL(req.url,'http://localhost')}catch{return json(res,400,{error:'Bad URL'})};if(url.pathname.startsWith('/api/'))return api(req,res,url);let f=staticFiles[url.pathname];if(!f)return json(res,404,{error:'Not found'});fs.readFile(path.join(__dirname,f),(err,content)=>{if(err)return json(res,404,{error:'Not found'});res.writeHead(200,{'Content-Type':({'.css':'text/css; charset=utf-8','.js':'text/javascript; charset=utf-8','.svg':'image/svg+xml'}[path.extname(f)]||'text/html; charset=utf-8'),'Cache-Control':'no-store'});res.end(content)})});
 setInterval(()=>{let now=Date.now();for(const [key,r]of rooms){if(r.phase==='playing'){if(now>r.deadline)endRound(r,'时间到！');else broadcast(r)}if(now-r.created>8*3600e3){for(const s of r.subscribers)s.res.end();rooms.delete(key)}}},1000).unref();
 server.listen(PORT,'0.0.0.0',()=>console.log(`中文冒险岛多人游戏: http://localhost:${PORT}/multiplayer.html`));
