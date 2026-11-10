@@ -1,0 +1,738 @@
+{
+  "schema_version": "1.0",
+  "lesson_id": "L01",
+  "status": "draft",
+  "metadata": {
+    "title_zh": "数字",
+    "title_en": "Numbers",
+    "level": "Chinese L2 Beginner · Year 7–8",
+    "source_scope": "Knowledge targets only; freshly authored learning materials",
+    "review_notice": "待教师审核 · Teacher review required",
+    "reference_files": [
+      "curriculum_reference.json:L01",
+      "lesson_activity_blueprints.json:L01",
+      "lesson_template.json"
+    ],
+    "goals": [
+      "认读一到十，并理解十一、二十和三十的组合。",
+      "用“我有＋数字＋个＋好朋友”表达数量。",
+      "听辨数量，口头描述，并在纸上练习书写数字。"
+    ]
+  },
+  "vocabulary": [
+    {
+      "id": "L01-W001",
+      "status": "draft",
+      "hanzi": "一",
+      "pinyin": "yī",
+      "english": "one",
+      "value": 1,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W002",
+      "status": "draft",
+      "hanzi": "二",
+      "pinyin": "èr",
+      "english": "two",
+      "value": 2,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W003",
+      "status": "draft",
+      "hanzi": "三",
+      "pinyin": "sān",
+      "english": "three",
+      "value": 3,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W004",
+      "status": "draft",
+      "hanzi": "四",
+      "pinyin": "sì",
+      "english": "four",
+      "value": 4,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W005",
+      "status": "draft",
+      "hanzi": "五",
+      "pinyin": "wǔ",
+      "english": "five",
+      "value": 5,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W006",
+      "status": "draft",
+      "hanzi": "六",
+      "pinyin": "liù",
+      "english": "six",
+      "value": 6,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W007",
+      "status": "draft",
+      "hanzi": "七",
+      "pinyin": "qī",
+      "english": "seven",
+      "value": 7,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W008",
+      "status": "draft",
+      "hanzi": "八",
+      "pinyin": "bā",
+      "english": "eight",
+      "value": 8,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W009",
+      "status": "draft",
+      "hanzi": "九",
+      "pinyin": "jiǔ",
+      "english": "nine",
+      "value": 9,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W010",
+      "status": "draft",
+      "hanzi": "十",
+      "pinyin": "shí",
+      "english": "ten",
+      "value": 10,
+      "drawable": true,
+      "undercover_pairable": true,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W011",
+      "status": "draft",
+      "hanzi": "我",
+      "pinyin": "wǒ",
+      "english": "I / me",
+      "drawable": false,
+      "undercover_pairable": false,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W012",
+      "status": "draft",
+      "hanzi": "有",
+      "pinyin": "yǒu",
+      "english": "have",
+      "drawable": false,
+      "undercover_pairable": false,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W013",
+      "status": "draft",
+      "hanzi": "个",
+      "pinyin": "ge",
+      "english": "general measure word",
+      "drawable": false,
+      "undercover_pairable": false,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W014",
+      "status": "draft",
+      "hanzi": "好",
+      "pinyin": "hǎo",
+      "english": "good",
+      "drawable": false,
+      "undercover_pairable": false,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W015",
+      "status": "draft",
+      "hanzi": "朋友",
+      "pinyin": "péngyou",
+      "english": "friend",
+      "drawable": false,
+      "undercover_pairable": false,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W016",
+      "status": "draft",
+      "hanzi": "十一",
+      "pinyin": "shí yī",
+      "english": "eleven",
+      "drawable": false,
+      "undercover_pairable": false,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W017",
+      "status": "draft",
+      "hanzi": "二十",
+      "pinyin": "èr shí",
+      "english": "twenty",
+      "drawable": false,
+      "undercover_pairable": false,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    },
+    {
+      "id": "L01-W018",
+      "status": "draft",
+      "hanzi": "三十",
+      "pinyin": "sān shí",
+      "english": "thirty",
+      "drawable": false,
+      "undercover_pairable": false,
+      "quiz_suitable": true,
+      "age_appropriate": true
+    }
+  ],
+  "readings": [
+    {
+      "id": "L01-R001",
+      "status": "draft",
+      "title": "数字节奏",
+      "hanzi": "一、三、五、七、九。二、四、六、八、十。",
+      "pinyin": "Yī, sān, wǔ, qī, jiǔ. Èr, sì, liù, bā, shí.",
+      "english": "Count the odd numbers, then the even numbers.",
+      "vocabulary_ids": [
+        "L01-W001",
+        "L01-W002",
+        "L01-W003",
+        "L01-W004",
+        "L01-W005",
+        "L01-W006",
+        "L01-W007",
+        "L01-W008",
+        "L01-W009",
+        "L01-W010"
+      ],
+      "skills": [
+        "listening",
+        "speaking",
+        "reading"
+      ]
+    },
+    {
+      "id": "L01-R002",
+      "status": "draft",
+      "title": "组合数字",
+      "hanzi": "十一、二十、三十。",
+      "pinyin": "Shí yī, èr shí, sān shí.",
+      "english": "Eleven, twenty, thirty. 十 + 一 = 11; 二 + 十 = 20.",
+      "vocabulary_ids": [
+        "L01-W010",
+        "L01-W016",
+        "L01-W017",
+        "L01-W018"
+      ],
+      "skills": [
+        "reading",
+        "speaking"
+      ]
+    }
+  ],
+  "sentences": [
+    {
+      "id": "L01-S001",
+      "status": "draft",
+      "hanzi": "我有四个好朋友。",
+      "pinyin": "Wǒ yǒu sì ge hǎo péngyou.",
+      "english": "I have four good friends.",
+      "vocabulary_ids": [
+        "L01-W011",
+        "L01-W012",
+        "L01-W004",
+        "L01-W013",
+        "L01-W014",
+        "L01-W015"
+      ],
+      "skills": [
+        "speaking",
+        "reading"
+      ]
+    },
+    {
+      "id": "L01-S002",
+      "status": "draft",
+      "hanzi": "你有几个好朋友？",
+      "pinyin": "Nǐ yǒu jǐ ge hǎo péngyou?",
+      "english": "How many good friends do you have?",
+      "vocabulary_ids": [
+        "L01-W012",
+        "L01-W013",
+        "L01-W014",
+        "L01-W015"
+      ],
+      "support_words": [
+        {
+          "hanzi": "你",
+          "pinyin": "nǐ",
+          "english": "you"
+        },
+        {
+          "hanzi": "几",
+          "pinyin": "jǐ",
+          "english": "how many"
+        }
+      ],
+      "skills": [
+        "listening",
+        "speaking"
+      ]
+    }
+  ],
+  "matching": [
+    {
+      "id": "L01-M001",
+      "status": "draft",
+      "vocabulary_id": "L01-W001",
+      "mode": "hanzi_quantity"
+    },
+    {
+      "id": "L01-M002",
+      "status": "draft",
+      "vocabulary_id": "L01-W002",
+      "mode": "hanzi_quantity"
+    },
+    {
+      "id": "L01-M003",
+      "status": "draft",
+      "vocabulary_id": "L01-W003",
+      "mode": "hanzi_quantity"
+    },
+    {
+      "id": "L01-M004",
+      "status": "draft",
+      "vocabulary_id": "L01-W004",
+      "mode": "hanzi_quantity"
+    },
+    {
+      "id": "L01-M005",
+      "status": "draft",
+      "vocabulary_id": "L01-W005",
+      "mode": "hanzi_quantity"
+    },
+    {
+      "id": "L01-M006",
+      "status": "draft",
+      "vocabulary_id": "L01-W006",
+      "mode": "hanzi_quantity"
+    },
+    {
+      "id": "L01-M007",
+      "status": "draft",
+      "vocabulary_id": "L01-W007",
+      "mode": "hanzi_quantity"
+    },
+    {
+      "id": "L01-M008",
+      "status": "draft",
+      "vocabulary_id": "L01-W008",
+      "mode": "hanzi_quantity"
+    },
+    {
+      "id": "L01-M009",
+      "status": "draft",
+      "vocabulary_id": "L01-W009",
+      "mode": "hanzi_quantity"
+    },
+    {
+      "id": "L01-M010",
+      "status": "draft",
+      "vocabulary_id": "L01-W010",
+      "mode": "hanzi_quantity"
+    }
+  ],
+  "comprehension": [
+    {
+      "id": "L01-C001",
+      "status": "draft",
+      "prompt": "“我有四个好朋友。”说话的人有几个好朋友？",
+      "options": [
+        "三个",
+        "四个",
+        "五个",
+        "十个"
+      ],
+      "correct_index": 1,
+      "explanation": "四个 = four. “我有……” means “I have…”.",
+      "vocabulary_ids": [
+        "L01-W004",
+        "L01-W011",
+        "L01-W012",
+        "L01-W013",
+        "L01-W014",
+        "L01-W015"
+      ],
+      "difficulty": "beginner",
+      "skills": [
+        "reading"
+      ]
+    },
+    {
+      "id": "L01-C002",
+      "status": "draft",
+      "prompt": "想表达“I have six good friends”，哪一句正确？",
+      "options": [
+        "我有三个好朋友。",
+        "我有四个好朋友。",
+        "我有六个好朋友。",
+        "我有十个好朋友。"
+      ],
+      "correct_index": 2,
+      "explanation": "“六” is six. Use 我有 + number + 个 + 好朋友。",
+      "vocabulary_ids": [
+        "L01-W003",
+        "L01-W004",
+        "L01-W006",
+        "L01-W010",
+        "L01-W011",
+        "L01-W012",
+        "L01-W013",
+        "L01-W014",
+        "L01-W015"
+      ],
+      "difficulty": "beginner",
+      "skills": [
+        "reading"
+      ]
+    }
+  ],
+  "quizzes": [
+    {
+      "id": "L01-Q001",
+      "status": "draft",
+      "prompt": "“七”的英文是？",
+      "options": [
+        "six",
+        "seven",
+        "eight",
+        "nine"
+      ],
+      "correct_index": 1,
+      "explanation": "七 qī = seven; 六 = six, 八 = eight, 九 = nine.",
+      "vocabulary_ids": [
+        "L01-W006",
+        "L01-W007",
+        "L01-W008",
+        "L01-W009"
+      ],
+      "difficulty": "beginner",
+      "skills": [
+        "reading"
+      ]
+    },
+    {
+      "id": "L01-Q002",
+      "status": "draft",
+      "prompt": "数一数：● ● ● ● ●",
+      "options": [
+        "三",
+        "四",
+        "五",
+        "六"
+      ],
+      "correct_index": 2,
+      "explanation": "五 wǔ = five. Count each dot once.",
+      "vocabulary_ids": [
+        "L01-W003",
+        "L01-W004",
+        "L01-W005",
+        "L01-W006"
+      ],
+      "difficulty": "beginner",
+      "skills": [
+        "reading"
+      ]
+    },
+    {
+      "id": "L01-Q003",
+      "status": "draft",
+      "prompt": "“我有四个好朋友。”是什么意思？",
+      "options": [
+        "I have three good friends.",
+        "I have ten good friends.",
+        "I have four good friends.",
+        "I have six good friends."
+      ],
+      "correct_index": 2,
+      "explanation": "四 = four. 我有四个好朋友 = I have four good friends.",
+      "vocabulary_ids": [
+        "L01-W003",
+        "L01-W004",
+        "L01-W006",
+        "L01-W010",
+        "L01-W011",
+        "L01-W012",
+        "L01-W013",
+        "L01-W014",
+        "L01-W015"
+      ],
+      "difficulty": "beginner",
+      "skills": [
+        "reading"
+      ]
+    },
+    {
+      "id": "L01-Q004",
+      "status": "draft",
+      "prompt": "哪个数字是 eleven？",
+      "options": [
+        "十",
+        "十一",
+        "二十",
+        "三十"
+      ],
+      "correct_index": 1,
+      "explanation": "十一 = 十 + 一 = eleven; 二十 = twenty, 三十 = thirty.",
+      "vocabulary_ids": [
+        "L01-W001",
+        "L01-W010",
+        "L01-W016",
+        "L01-W017",
+        "L01-W018"
+      ],
+      "difficulty": "beginner",
+      "skills": [
+        "reading"
+      ]
+    },
+    {
+      "id": "L01-Q005",
+      "status": "draft",
+      "prompt": "听教师或设备读出的数字，再选择中文。",
+      "options": [
+        "二",
+        "五",
+        "八",
+        "十"
+      ],
+      "correct_index": 2,
+      "explanation": "八 bā = eight. 请与二 èr、五 wǔ、十 shí 对比。",
+      "vocabulary_ids": [
+        "L01-W002",
+        "L01-W005",
+        "L01-W008",
+        "L01-W010"
+      ],
+      "difficulty": "beginner",
+      "skills": [
+        "reading"
+      ],
+      "audio_vocabulary_id": "L01-W008"
+    }
+  ],
+  "game_prompts": {
+    "undercover": [
+      {
+        "id": "L01-U001",
+        "status": "draft",
+        "regular_id": "L01-W003",
+        "undercover_id": "L01-W004",
+        "discussion_prompt": "用中文描述数量，不说出数字。可以比较大小、拍手，或用已学的词说线索。",
+        "teacher_note": "可用中文线索很少，初学者需教师示范；此词对需教师确认难度。"
+      },
+      {
+        "id": "L01-U002",
+        "status": "draft",
+        "regular_id": "L01-W007",
+        "undercover_id": "L01-W008",
+        "discussion_prompt": "轮流描述自己的数量，不直接说数字。",
+        "teacher_note": "先练习比较数量，再进行讨论。"
+      }
+    ],
+    "drawing": [
+      {
+        "id": "L01-D001",
+        "status": "draft",
+        "answer_id": "L01-W003",
+        "choice_ids": [
+          "L01-W002",
+          "L01-W003",
+          "L01-W004",
+          "L01-W005"
+        ],
+        "instruction": "画出三个相同的简单图形，例如圆形；不要写汉字、拼音或阿拉伯数字。",
+        "allowed": true,
+        "answer_mode": [
+          "choice",
+          "typing"
+        ]
+      },
+      {
+        "id": "L01-D002",
+        "status": "draft",
+        "answer_id": "L01-W005",
+        "choice_ids": [
+          "L01-W003",
+          "L01-W004",
+          "L01-W005",
+          "L01-W006"
+        ],
+        "instruction": "画出五个相同的简单图形，例如圆形；不要写汉字、拼音或阿拉伯数字。",
+        "allowed": true,
+        "answer_mode": [
+          "choice",
+          "typing"
+        ]
+      },
+      {
+        "id": "L01-D003",
+        "status": "draft",
+        "answer_id": "L01-W008",
+        "choice_ids": [
+          "L01-W006",
+          "L01-W007",
+          "L01-W008",
+          "L01-W009"
+        ],
+        "instruction": "画出八个相同的简单图形，例如圆形；不要写汉字、拼音或阿拉伯数字。",
+        "allowed": true,
+        "answer_mode": [
+          "choice",
+          "typing"
+        ]
+      },
+      {
+        "id": "L01-D004",
+        "status": "draft",
+        "answer_id": "L01-W010",
+        "choice_ids": [
+          "L01-W007",
+          "L01-W008",
+          "L01-W009",
+          "L01-W010"
+        ],
+        "instruction": "画出十个相同的简单图形，例如圆形；不要写汉字、拼音或阿拉伯数字。",
+        "allowed": true,
+        "answer_mode": [
+          "choice",
+          "typing"
+        ]
+      }
+    ]
+  },
+  "assessments": {
+    "speaking": {
+      "id": "L01-A001",
+      "status": "draft",
+      "prompt": "与同伴轮流提问：“你有几个好朋友？”再用完整句子回答。可以虚构数量。",
+      "evaluation": "teacher_or_partner",
+      "skills": [
+        "listening",
+        "speaking"
+      ]
+    },
+    "writing": {
+      "id": "L01-A002",
+      "status": "draft",
+      "prompt": "在纸上写“一、二、三、十”，再写一句“我有……个好朋友。”。不填写朋友姓名。",
+      "hints": [
+        "一：从左到右写一横。",
+        "二、三：横画从上到下，留意长短和间距。",
+        "十：先横后竖。"
+      ],
+      "evaluation": "teacher_review",
+      "skills": [
+        "writing"
+      ]
+    },
+    "exit_ticket": [
+      {
+        "id": "L01-E001",
+        "status": "draft",
+        "prompt": "离岛小挑战：“二十”是多少？",
+        "options": [
+          "2",
+          "10",
+          "12",
+          "20"
+        ],
+        "correct_index": 3,
+        "explanation": "二十 = two tens = 20.",
+        "vocabulary_ids": [
+          "L01-W002",
+          "L01-W010",
+          "L01-W017"
+        ],
+        "difficulty": "beginner",
+        "skills": [
+          "reading"
+        ]
+      },
+      {
+        "id": "L01-E002",
+        "status": "draft",
+        "prompt": "写一句“我有……个好朋友。”，或先在纸上写好，再记录句子。数量可以虚构，不写任何人的姓名。",
+        "evaluation": "teacher_review",
+        "skills": [
+          "writing",
+          "speaking"
+        ]
+      }
+    ]
+  },
+  "rewards": {
+    "read": 10,
+    "match": 20,
+    "patterns": 20,
+    "quiz": 20,
+    "spy": 5,
+    "draw": 5,
+    "exit": 10,
+    "notice": "Demo XP · 当前页面内按首次完成任务计算，不代表教师评价。"
+  },
+  "publication": {
+    "workflow": [
+      "draft",
+      "teacher_reviewed",
+      "published"
+    ],
+    "reviewed_by": null,
+    "reviewed_at": null,
+    "notice": "Only teacher preview. No in-browser action may approve or publish this pack."
+  }
+}
