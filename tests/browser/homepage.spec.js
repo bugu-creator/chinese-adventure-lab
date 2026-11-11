@@ -30,10 +30,11 @@ test('lesson deep links, matching feedback, pinyin and quiz work',async({page})=
  await page.goto('/learn.html?lesson=invalid&step=invalid');await expect(page.locator('#lessonPicker')).toHaveValue('l1');
 });
 test('all game cards open their corresponding functional page',async({page})=>{
- for(const [index,step] of [[0,'match'],[1,'quiz'],[2,'spy']]){
+ for(const [index,step] of [[0,'match'],[1,'quiz']]){
   await page.goto('/');await page.locator('#game-cards a').nth(index).click();
   await expect(page).toHaveURL(new RegExp('step='+step));await expect(page.locator('#content')).not.toBeEmpty();
  }
+ await page.goto('/');await page.locator('#game-cards a').nth(2).click();await expect(page).toHaveURL(/undercover.html/);await expect(page.locator('#join')).toBeVisible();
  await page.goto('/');await page.locator('#game-cards a').nth(3).click();
  await expect(page.locator('#create')).toBeVisible();await expect(page.locator('#join')).toBeVisible();
 });

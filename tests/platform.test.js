@@ -14,3 +14,27 @@ test('all static homepage links resolve to existing routes or sections',async()=
 test('learning and multiplayer inline JavaScript compile; lessons and deep links remain present',()=>{for(const file of ['learn.html','multiplayer.html']){const html=fs.readFileSync(file,'utf8');new vm.Script(html.match(/<script>([\s\S]*?)<\/script>/)[1]);}const lesson=fs.readFileSync('learn.html','utf8');assert.match(lesson,/entryParams/);assert.match(lesson,/l1:/);assert.match(lesson,/l2:/);for(const name of ['read','match','quiz','spy','draw','teacher'])assert.match(lesson,new RegExp('function '+name+'\\('));});
 test('student join request retains the entered room rather than empty session state',async()=>{let payload;const context={room:'',token:'',fetch:async(url,init)=>{payload=JSON.parse(init.body);return {ok:true,json:async()=>({ok:true})};}};vm.createContext(context);const html=fs.readFileSync('multiplayer.html','utf8');const fn=html.match(/async function call\(endpoint,data\)\{[^\n]+/)[0];vm.runInContext(fn,context);await vm.runInContext("call('join',{room:'ABC123',name:'Panda'})",context);assert.equal(payload.room,'ABC123');});
 test('multiplayer lifecycle preserves secrets, role permissions, board and scores',async()=>{const host=(await post('create',{lesson:'l1'})).data;const room=host.room;const p1=(await post('join',{room,name:'Panda A'})).data;const p2=(await post('join',{room,name:'Panda B'})).data;assert.equal((await post('start',p1)).status,400);assert.equal((await post('start',host)).status,200);const h=await view(room,host.token),d=await view(room,p1.token),g=await view(room,p2.token);assert.equal(d.isDrawer,true);assert.equal(d.word,h.word);assert.equal(g.word,null);assert.equal(g.options.length,4);assert.equal((await view(room,'invalid')).status,403);assert.equal((await post('stroke',{...p2,points:[[0,0],[1,1]]})).status,400);assert.equal((await post('stroke',{...p1,points:[[0,0],[1,1]]})).status,200);assert.equal((await view(room,p2.token)).strokes.length,1);assert.equal((await post('answer',{...p1,answer:h.word})).status,400);assert.equal((await post('answer',{...p2,answer:h.word})).data.correct,true);const result=await view(room,p2.token);assert.equal(result.phase,'result');assert.equal(result.players.find(p=>p.id===p2.playerId).score,10);assert.equal((await post('answer',{...p2,answer:h.word})).status,400);await post('config',{...host,mode:'type'});await post('start',host);const next=await view(room,p1.token);assert.equal(next.mode,'type');assert.equal(next.word,null);assert.equal(next.options,null);assert.equal((await view(room,p2.token)).isDrawer,true);await post('end',host);assert.equal((await view(room,p1.token)).phase,'result');});
+test('undercover assigns private per-player words and authorizes voting/reveal on the server',async()=>{
+ const host=(await post('create',{game:'undercover',teacherPreview:true})).data;
+ const room=host.room,players=[];
+ assert.equal((await post('create',{game:'undercover'})).status,400);
+ for(let i=0;i<3;i++)players.push((await post('join',{room,name:'Panda '+i,game:'undercover'})).data);
+ assert.equal((await view(room,players[0].token)).myWord,null);
+ assert.equal((await post('start',players[0])).status,400);
+ await post('start',host);
+ const views=await Promise.all(players.map(p=>view(room,p.token))),h=await view(room,host.token);
+ assert.equal(h.myWord,null);assert.equal(h.results,null);
+ assert.equal(new Set(views.map(s=>s.myWord.hanzi)).size,2);
+ for(const s of views){assert.equal(s.game,'undercover');assert.equal(s.players.length,3);assert.equal(s.results,null);assert.equal(s.players.some(p=>'word'in p||'token'in p||'isUndercover'in p),false);}
+ const saved=(await post('state',players[0])).data;assert.deepEqual(saved.myWord,views[0].myWord);
+ assert.equal((await post('join',{room,name:'Late',game:'undercover'})).status,400);
+ assert.equal((await post('reveal',players[0])).status,400);
+ assert.equal((await post('stroke',{...players[0],points:[[0,0]]})).status,400);
+ assert.equal((await post('open-vote',players[0])).status,400);await post('open-vote',host);
+ assert.equal((await post('vote',{...players[0],target:players[0].playerId,roundId:views[0].roundId})).status,400);
+ assert.equal((await post('vote',{...players[0],target:players[1].playerId,roundId:'old'})).status,400);
+ for(let i=0;i<3;i++)assert.equal((await post('vote',{...players[i],target:players[(i+1)%3].playerId,roundId:views[i].roundId})).status,200);
+ const result=await view(room,players[0].token);assert.equal(result.phase,'result');assert.equal(result.results.players.filter(p=>p.isUndercover).length,1);
+ assert.equal((await post('vote',{...players[0],target:players[1].playerId,roundId:views[0].roundId})).status,400);
+ await post('start',host);const next=await view(room,players[0].token);assert.notEqual(next.roundId,views[0].roundId);assert.equal(next.myVote,null);assert.equal(next.results,null);
+});
