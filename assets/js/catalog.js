@@ -7,7 +7,7 @@ export const lessons = [
 export const games = [
  {icon:'🧩',title:'词汇匹配',description:'配对词语与英文',step:'match',color:'violet'},
  {icon:'🏆',title:'竞技问答',description:'单设备 · 五题挑战',step:'quiz',color:'coral'},
- {icon:'🕵️',title:'谁是卧底',description:'同屏传递 · 中文描述',step:'spy',color:'purple'},
+ {icon:'🕵️',title:'谁是卧底',description:'多人房间 · 私密词语',url:'/undercover.html',color:'purple'},
  {icon:'🎨',title:'你画我猜',description:'多人联机 · 课堂挑战',url:'/multiplayer.html',color:'blue'}
 ];
 export const featureDescriptions = {
