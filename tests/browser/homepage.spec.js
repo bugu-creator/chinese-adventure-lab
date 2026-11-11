@@ -49,3 +49,10 @@ test('two student browsers can join teacher room and receive isolated roles',asy
   await expect(b.locator('#stage')).toContainText('本轮结束');await expect(b.locator('#people')).toContainText('⭐10');
  }finally{await Promise.all([host.close(),studentA.close(),studentB.close()]);}
 });
+test('legacy lesson concept options are readable without unlearned Chinese labels',async({page})=>{
+ await page.goto('/learn.html?lesson=l1&step=quiz');
+ for(const answer of [1,0,1,2]){await page.locator(`[data-answer="${answer}"]`).click();await page.locator('#nextQ').click();}
+ await expect(page.locator('.question')).toContainText('what does “几个” ask about');
+ for(const [index,text]of ['Name','Place','Quantity (how many)','Time'].entries())await expect(page.locator(`[data-answer="${index}"]`)).toContainText(text);
+ await page.locator('[data-answer="2"]').click();await expect(page.locator('#quizFeedback')).toContainText('how many');
+});

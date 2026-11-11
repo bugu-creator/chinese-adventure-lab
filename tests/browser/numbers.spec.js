@@ -15,6 +15,7 @@ test('complete core lesson, feedback and review-only Exit Ticket with idempotent
  await stage(page,'match');
  for(let i=0;i<10;i++){const id=pack.matching[i].vocabulary_id;await page.locator(`[data-left="${id}"]`).click();await page.locator(`[data-right="${id}"]`).click();if(i===4)await page.locator('#match-next').click();}
  await expect(page.locator('#xp')).toHaveText('30');await stage(page,'patterns');
+ await expect(page.locator('.instruction-en')).toContainText('how many good friends');await page.locator('#pinyin').uncheck();await expect(page.locator('.instruction-en')).toBeVisible();
  for(const q of pack.comprehension){await page.locator(`[data-answer="${q.correct_index}"]`).click();await expect(page.locator('#feedback')).toContainText(q.explanation);await page.locator('#pattern-next').click();}
  await page.locator('#spoken').check();await page.locator('#patterns-done').click();await expect(page.locator('#xp')).toHaveText('50');await stage(page,'quiz');
  for(const q of pack.quizzes){await page.locator(`[data-answer="${q.correct_index}"]`).click();await expect(page.locator('#feedback')).toContainText(q.explanation);await page.locator('#next-question').click();}

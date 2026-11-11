@@ -410,7 +410,8 @@
       "difficulty": "beginner",
       "skills": [
         "reading"
-      ]
+      ],
+      "prompt_en": "In “我有四个好朋友。”, how many good friends does the speaker have?"
     },
     {
       "id": "L01-C002",
@@ -438,7 +439,8 @@
       "difficulty": "beginner",
       "skills": [
         "reading"
-      ]
+      ],
+      "prompt_en": "Which Chinese sentence means “I have six good friends”?"
     }
   ],
   "quizzes": [
@@ -463,7 +465,8 @@
       "difficulty": "beginner",
       "skills": [
         "reading"
-      ]
+      ],
+      "prompt_en": "What does 七 mean in English?"
     },
     {
       "id": "L01-Q002",
@@ -486,7 +489,8 @@
       "difficulty": "beginner",
       "skills": [
         "reading"
-      ]
+      ],
+      "prompt_en": "Count the dots. Choose the Chinese number."
     },
     {
       "id": "L01-Q003",
@@ -514,7 +518,8 @@
       "difficulty": "beginner",
       "skills": [
         "reading"
-      ]
+      ],
+      "prompt_en": "What does this Chinese sentence mean?"
     },
     {
       "id": "L01-Q004",
@@ -538,7 +543,8 @@
       "difficulty": "beginner",
       "skills": [
         "reading"
-      ]
+      ],
+      "prompt_en": "Which Chinese number means eleven?"
     },
     {
       "id": "L01-Q005",
@@ -551,7 +557,7 @@
         "十"
       ],
       "correct_index": 2,
-      "explanation": "八 bā = eight. 请与二 èr、五 wǔ、十 shí 对比。",
+      "explanation": "八 bā = eight. Compare 二 èr (two), 五 wǔ (five) and 十 shí (ten).",
       "vocabulary_ids": [
         "L01-W002",
         "L01-W005",
@@ -562,7 +568,8 @@
       "skills": [
         "reading"
       ],
-      "audio_vocabulary_id": "L01-W008"
+      "audio_vocabulary_id": "L01-W008",
+      "prompt_en": "Listen to the number. Choose the Chinese character."
     }
   ],
   "game_prompts": {
@@ -573,7 +580,8 @@
         "regular_id": "L01-W003",
         "undercover_id": "L01-W004",
         "discussion_prompt": "用中文描述数量，不说出数字。可以比较大小、拍手，或用已学的词说线索。",
-        "teacher_note": "可用中文线索很少，初学者需教师示范；此词对需教师确认难度。"
+        "teacher_note": "可用中文线索很少，初学者需教师示范；此词对需教师确认难度。",
+        "discussion_prompt_en": "Describe the quantity without saying your number. Compare sizes, clap, or use Chinese words you have learned."
       },
       {
         "id": "L01-U002",
@@ -581,7 +589,8 @@
         "regular_id": "L01-W007",
         "undercover_id": "L01-W008",
         "discussion_prompt": "轮流描述自己的数量，不直接说数字。",
-        "teacher_note": "先练习比较数量，再进行讨论。"
+        "teacher_note": "先练习比较数量，再进行讨论。",
+        "discussion_prompt_en": "Take turns giving clues about your quantity. Do not say the number."
       }
     ],
     "drawing": [
@@ -600,7 +609,8 @@
         "answer_mode": [
           "choice",
           "typing"
-        ]
+        ],
+        "instruction_en": "Draw 3 identical simple shapes, such as circles. Do not write Chinese characters, pinyin or digits."
       },
       {
         "id": "L01-D002",
@@ -617,7 +627,8 @@
         "answer_mode": [
           "choice",
           "typing"
-        ]
+        ],
+        "instruction_en": "Draw 5 identical simple shapes, such as circles. Do not write Chinese characters, pinyin or digits."
       },
       {
         "id": "L01-D003",
@@ -634,7 +645,8 @@
         "answer_mode": [
           "choice",
           "typing"
-        ]
+        ],
+        "instruction_en": "Draw 8 identical simple shapes, such as circles. Do not write Chinese characters, pinyin or digits."
       },
       {
         "id": "L01-D004",
@@ -651,7 +663,8 @@
         "answer_mode": [
           "choice",
           "typing"
-        ]
+        ],
+        "instruction_en": "Draw 10 identical simple shapes, such as circles. Do not write Chinese characters, pinyin or digits."
       }
     ]
   },
@@ -664,7 +677,8 @@
       "skills": [
         "listening",
         "speaking"
-      ]
+      ],
+      "prompt_en": "Take turns asking “你有几个好朋友？” and answering in a complete Chinese sentence. Use a made-up number."
     },
     "writing": {
       "id": "L01-A002",
@@ -678,6 +692,12 @@
       "evaluation": "teacher_review",
       "skills": [
         "writing"
+      ],
+      "prompt_en": "On paper, write 一、二、三、十. Then write a sentence starting with 我有…个好朋友. Do not write anyone’s name.",
+      "hints_en": [
+        "一: one horizontal stroke, left to right.",
+        "二 and 三: write the horizontal strokes from top to bottom. Check spacing and length.",
+        "十: horizontal stroke first, then vertical."
       ]
     },
     "exit_ticket": [
@@ -701,7 +721,8 @@
         "difficulty": "beginner",
         "skills": [
           "reading"
-        ]
+        ],
+        "prompt_en": "What number does 二十 represent?"
       },
       {
         "id": "L01-E002",
@@ -711,7 +732,8 @@
         "skills": [
           "writing",
           "speaking"
-        ]
+        ],
+        "prompt_en": "Write one Chinese sentence starting with 我有…个好朋友. You may write it on paper first. Use a made-up number; do not include names."
       }
     ]
   },
@@ -734,5 +756,10 @@
     "reviewed_by": null,
     "reviewed_at": null,
     "notice": "Only teacher preview. No in-browser action may approve or publish this pack."
+  },
+  "language_support": {
+    "instruction_language": "zh-CN + en",
+    "target_language": "zh-CN",
+    "policy": "Use English or bilingual support for unlearned instructions and conceptual labels. Keep assessed vocabulary in Chinese; do not translate away the answer. English support stays visible when pinyin is hidden."
   }
 }

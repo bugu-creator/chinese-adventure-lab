@@ -20,3 +20,8 @@ test('drawing and undercover pools use suitable shared words and fair options',a
 test('reward ledger is idempotent and optional games respect teacher stage locks',async()=>{
  const {award,canVisit,normalizeAnswer,shuffle}=await import('../assets/js/lesson-core.mjs');const completed=new Set();assert.equal(award(completed,pack,'read'),10);assert.equal(award(completed,pack,'read'),0);assert.equal(canVisit('patterns',completed,true),false);assert.equal(canVisit('match',completed,true),true);assert.equal(canVisit('exit',completed,false),true);assert.equal(canVisit('draw',completed,true),false);for(const s of ['match','patterns','quiz'])award(completed,pack,s);assert.equal(canVisit('exit',completed,true),true);assert.equal(normalizeAnswer(' 三。 '),'三');assert.deepEqual(shuffle([1,2,3],()=>.5).sort(),[1,2,3]);
 });
+test('beginner questions provide English instructions without translating assessed answer choices',()=>{
+ for(const q of [...pack.quizzes,...pack.comprehension,pack.assessments.exit_ticket[0]])assert.ok(q.prompt_en&&/[a-zA-Z]/.test(q.prompt_en),q.id);
+ assert.equal(pack.comprehension[0].options[1],'四个');
+ assert.ok(pack.language_support.policy.includes('unlearned'));
+});
