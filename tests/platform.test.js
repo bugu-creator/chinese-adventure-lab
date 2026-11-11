@@ -38,3 +38,14 @@ test('undercover assigns private per-player words and authorizes voting/reveal o
  assert.equal((await post('vote',{...players[0],target:players[1].playerId,roundId:views[0].roundId})).status,400);
  await post('start',host);const next=await view(room,players[0].token);assert.notEqual(next.roundId,views[0].roundId);assert.equal(next.myVote,null);assert.equal(next.results,null);
 });
+test('two people can play drawing with the host as a player without revealing the host guesser answer',async()=>{
+ const host=(await post('create',{hostPlays:true,lesson:'l01draft',teacherPreview:true})).data;
+ assert.equal((await post('start',host)).status,400);
+ const guest=(await post('join',{room:host.room,name:'Panda'})).data;
+ await post('start',host);const first=await view(host.room,host.token),g=await view(host.room,guest.token);
+ assert.equal(first.isHost,true);assert.equal(first.isDrawer,true);assert.equal(first.players.length,2);assert.ok(first.word);assert.ok(first.drawerInstruction);assert.equal(g.word,null);assert.equal(g.drawerInstruction,null);
+ await post('answer',{...guest,answer:first.word});await post('start',host);
+ const second=await view(host.room,host.token),drawer=await view(host.room,guest.token);assert.equal(second.isHost,true);assert.equal(second.isDrawer,false);assert.equal(second.word,null);assert.equal(second.drawerInstruction,null);assert.equal(second.options.length,4);assert.equal(drawer.isDrawer,true);
+ assert.equal((await post('answer',{...host,answer:drawer.word})).data.correct,true);
+ assert.equal((await view(host.room,host.token)).phase,'result');
+});

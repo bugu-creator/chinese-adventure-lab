@@ -57,3 +57,9 @@ test('legacy lesson concept options are readable without unlearned Chinese label
  for(const [index,text]of ['Name','Place','Quantity (how many)','Time'].entries())await expect(page.locator(`[data-answer="${index}"]`)).toContainText(text);
  await page.locator('[data-answer="2"]').click();await expect(page.locator('#quizFeedback')).toContainText('how many');
 });
+test('teacher and one guest can share a link, draw and swap roles with only two devices',async({browser})=>{
+ const contexts=await Promise.all([browser.newContext(),browser.newContext()]);try{
+  const h=await contexts[0].newPage(),g=await contexts[1].newPage();await h.goto('/multiplayer.html?lesson=l01draft');await h.locator('#draftWords').check();await h.locator('#hostPlays').check();await h.locator('#create').click();await expect(h.locator('#code')).toHaveText(/^[A-F0-9]{6}$/);const code=await h.locator('#code').textContent();const link=await h.locator('#inviteLink').inputValue();expect(link).not.toContain('token');
+  await g.goto(link);await expect(g.locator('#joinCode')).toHaveValue(code);await g.locator('#joinName').fill('Panda 2');await g.locator('#join').click();await expect(g.locator('#people')).toContainText('Panda 2');await h.locator('#start').click();await expect(h.locator('#clear')).toBeVisible();await expect(g.locator('.secret')).toHaveCount(0);const answer=await h.locator('.secret').textContent();await g.locator('[data-answer]').filter({hasText:answer}).click();await expect(h.locator('#stage')).toContainText('本轮结束');await h.locator('#start').click();await expect(g.locator('#clear')).toBeVisible();await expect(h.locator('.secret')).toHaveCount(0);const second=await g.locator('.secret').textContent();await h.locator('[data-answer]').filter({hasText:second}).click();await expect(g.locator('#stage')).toContainText('本轮结束');
+ }finally{await Promise.all(contexts.map(c=>c.close()));}
+});
