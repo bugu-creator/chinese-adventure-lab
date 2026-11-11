@@ -15,7 +15,7 @@ function broadcast(r){for(const s of [...r.subscribers]){try{s.res.write('data: 
 function drawNext(r){r.round++;r.roundId=id();r.phase='playing';r.strokes=[];r.winners=[];r.message='';let next=r.players[(r.round-1)%r.players.length];r.drawerId=next.id;let pool=LESSONS[r.lesson].words;r.word=pool[(r.round-1)%pool.length];r.options=[...r.word.options].sort(()=>Math.random()-.5);r.deadline=Date.now()+60000;for(const p of r.players)p.answered=false;broadcast(r)}
 function endRound(r,message='本轮结束'){if(r.phase!=='playing')return;r.phase='result';r.message=message;broadcast(r)}
 function authorize(r,token){if(!r)throw new Error('房间不存在或已过期');if(token!==r.host&&!r.players.some(p=>p.token===token))throw new Error('你尚未加入这个房间')}
-async function api(req,res,url){if(req.method==='GET'&&url.pathname==='/api/events'){
+async function api(req,res,url){if(req.method==='GET'&&url.pathname==='/api/health')return json(res,200,{games:['drawing','undercover']});if(req.method==='GET'&&url.pathname==='/api/events'){
  const r=rooms.get(url.searchParams.get('room'));const token=url.searchParams.get('token');try{authorize(r,token)}catch(e){return json(res,403,{error:e.message})}
  res.writeHead(200,{'Content-Type':'text/event-stream; charset=utf-8','Cache-Control':'no-cache, no-transform','Connection':'keep-alive','X-Accel-Buffering':'no'});res.write('retry: 1500\n\n');const sub={res,token};r.subscribers.add(sub);res.write('data: '+JSON.stringify(roomView(r,token))+'\n\n');req.on('close',()=>r.subscribers.delete(sub));return;
  }
